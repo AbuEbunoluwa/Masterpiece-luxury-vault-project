@@ -1,0 +1,37 @@
+# worker-deployment.yaml
+#
+# Deliberately a plain Deployment for Phase 1 — just gets the worker
+# process running and connected to Redis. Converting this to a real
+# Job/CronJob against an actual queue (SQS/RabbitMQ) is intentionally
+# saved for later, per your own project notes: "this forces you to
+# learn Jobs/CronJobs, not just Deployments." Don't skip that step
+# later by leaving this as a Deployment forever.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker
+  labels:
+    app: worker
+spec:
+  replicas: {{ .Values.worker.replicaCount }}
+  selector:
+    matchLabels:
+      app: worker
+  template:
+    metadata:
+      labels:
+        app: worker
+    spec:
+      containers:
+        - name: worker
+          image: "{{ .Values.worker.image.repository }}:{{ .Values.worker.image.tag }}"
+          env:
+            - name: REDIS_HOST
+              value: {{ .Values.worker.env.REDIS_HOST | quote }}
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 300m
+              memory: 256Mi

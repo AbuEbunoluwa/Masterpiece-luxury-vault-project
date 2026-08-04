@@ -1,0 +1,47 @@
+# values.yaml
+#
+# Fill in the placeholders below with your actual Terraform outputs:
+#   terraform output ecr_api_url
+#   terraform output ecr_frontend_url
+#   terraform output ecr_worker_url
+#
+# Postgres and Redis run IN-CLUSTER now (not RDS/ElastiCache) — see
+# helm/templates/postgres.yaml and redis.yaml. Their connection info is
+# just the Kubernetes Service DNS name, always "postgres-service" /
+# "redis-service" — nothing to fill in for those two, they're fixed.
+#
+# DB username/password still come from a Kubernetes Secret named
+# db-credentials — see RUNBOOK.md for how to create it (simplified now
+# that Secrets Manager/RDS aren't in the picture, just a plain
+# `kubectl create secret` with values you pick yourself).
+
+api:
+  image:
+    repository: "624782989130.dkr.ecr.us-east-1.amazonaws.com/luxury-vault-api"
+    tag: "v3"
+  replicaCount: 2
+  port: 4000
+  env:
+    REDIS_HOST: "redis-service"
+    DB_HOST: "postgres-service"
+    NODE_ENV: "production"
+
+frontend:
+  image:
+    repository: "624782989130.dkr.ecr.us-east-1.amazonaws.com/luxury-vault-frontend"
+    tag: "v3"
+  replicaCount: 2
+  port: 5173
+  env:
+    API_URL: "luxury-vault.local"
+
+worker:
+  image:
+    repository: "REPLACE_WITH_ecr_worker_url"
+    tag: "latest"
+  replicaCount: 1
+  env:
+    REDIS_HOST: "redis-service"
+
+ingress:
+  host: "luxury-vault.local"

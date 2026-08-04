@@ -1,0 +1,82 @@
+# postgres.yaml
+#
+# In-cluster Postgres — replaces RDS for this cost-conscious learning phase.
+# Uses a PVC for persistence (EBS-backed via the EKS default gp2/gp3
+# StorageClass), so data survives a pod restart, but NOT a full cluster
+# teardown (terraform destroy wipes the underlying EBS volume along with
+# everything else) — don't treat this as a real backup strategy, it isn't one.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pvc
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  labels:
+    app: postgres
+spec:
+  replicas: 1   # deliberately 1 — Postgres isn't horizontally scalable this simply;
+                # this is a single point of failure on purpose, so you can practice
+                # diagnosing exactly that kind of failure in your fault-injection phase
+  selector:
+    matchLabels:
+      app: postgres
+  strategy:
+    type: Recreate   # avoids two Postgres pods fighting over the same PVC during a rollout
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:16-alpine
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: "luxuryvault"
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef: { name: db-credentials, key: username }
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef: { name: db-credentials, key: password }
+          volumeMounts:
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data
+              subPath: pgdata   # avoids the "lost+found" directory conflict Postgres hits otherwise
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          readinessProbe:
+            exec:
+              command: ["pg_isready", "-U", "$(POSTGRES_USER)"]
+            initialDelaySeconds: 10
+            periodSeconds: 10
+      volumes:
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: postgres-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+spec:
+  selector:
+    app: postgres
+  ports:
+    - port: 5432
+      targetPort: 5432
