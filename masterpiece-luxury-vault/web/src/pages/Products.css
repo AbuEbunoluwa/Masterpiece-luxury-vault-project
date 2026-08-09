@@ -1,0 +1,30 @@
+.products-page {
+  padding: var(--space-12) var(--space-6) var(--space-24);
+}
+
+.products-page__header {
+  margin-bottom: var(--space-8);
+}
+
+.products-page__header h1 {
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-2);
+}
+
+.products-page__count {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.products-page__error {
+  color: var(--color-error);
+  margin-bottom: var(--space-6);
+}
+
+.products-page__empty {
+  padding: var(--space-16) 0;
+  text-align: center;
+  color: var(--color-text-secondary);
+  border: var(--border-hairline);
+}

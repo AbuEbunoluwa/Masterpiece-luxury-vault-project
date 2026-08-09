@@ -1,0 +1,43 @@
+# --- Node / JS (api, web) ---
+node_modules/
+dist/
+build/
+.vite/
+*.log
+npm-debug.log*
+
+# --- Environment / secrets — NEVER commit these ---
+.env
+.env.local
+.env.*.local
+*.env
+!.env.example
+
+# --- Terraform ---
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+.terraform.lock.hcl
+crash.log
+crash.*.log
+*.tfplan
+terraform-provider-*
+
+# --- Python (venv, if any part of this repo uses it) ---
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# --- OS / editor noise ---
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# --- Misc project artifacts ---
+*.zip
+*.tar.gz
+iam_policy.json

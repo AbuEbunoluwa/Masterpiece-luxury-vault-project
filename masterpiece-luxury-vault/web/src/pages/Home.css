@@ -1,0 +1,122 @@
+.hero {
+  background: var(--color-ink);
+  color: var(--color-text-on-dark);
+  padding: var(--space-24) 0;
+}
+
+.hero__inner {
+  max-width: 720px;
+}
+
+.hero__eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-brass-soft);
+  margin-bottom: var(--space-6);
+}
+
+.hero__title {
+  font-size: var(--text-4xl);
+  font-weight: 500;
+  color: var(--color-text-on-dark);
+  margin-bottom: var(--space-6);
+}
+
+.hero__lede {
+  font-size: var(--text-lg);
+  color: var(--color-text-on-dark-soft);
+  max-width: 480px;
+  margin-bottom: var(--space-8);
+}
+
+.hero__actions {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.btn {
+  display: inline-block;
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: opacity 0.15s ease, background 0.15s ease;
+}
+
+.btn--brass {
+  background: var(--color-brass);
+  color: var(--color-ink);
+}
+
+.btn--brass:hover {
+  opacity: 0.85;
+}
+
+.btn--ghost-dark {
+  border-color: var(--color-border-on-dark);
+  color: var(--color-text-on-dark);
+}
+
+.btn--ghost-dark:hover {
+  border-color: var(--color-brass-soft);
+}
+
+.btn--ink {
+  background: var(--color-ink);
+  color: var(--color-text-on-dark);
+}
+
+.btn--ink:hover {
+  opacity: 0.9;
+}
+
+.btn--full {
+  width: 100%;
+  text-align: center;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-6);
+}
+
+.featured {
+  padding: var(--space-16) var(--space-6);
+}
+
+.featured__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--space-8);
+}
+
+.featured__header h2 {
+  font-size: var(--text-2xl);
+}
+
+.featured__loading {
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: var(--space-16) 0;
+  }
+  .hero__title {
+    font-size: var(--text-3xl);
+  }
+  .hero__actions {
+    flex-direction: column;
+  }
+}

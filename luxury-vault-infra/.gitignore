@@ -1,0 +1,32 @@
+# --- Terraform ---
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+.terraform.lock.hcl
+crash.log
+crash.*.log
+*.tfplan
+terraform-provider-*
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# --- Helm ---
+*.tgz
+Chart.lock
+
+# --- Secrets / credentials, never commit these ---
+*.pem
+*.key
+iam_policy.json
+kubeconfig
+*.kubeconfig
+
+# --- OS / editor noise ---
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
