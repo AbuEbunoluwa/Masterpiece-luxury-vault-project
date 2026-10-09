@@ -22,12 +22,12 @@ variable "cluster_name" {
 
 variable "kubernetes_version" {
   type    = string
-  default = "1.30"
+  default = "1.31"
 }
 
 variable "node_instance_type" {
   type    = string
-  default = "t3.medium"
+  default = "t3.small"
 }
 
 variable "node_desired_capacity" {
@@ -58,7 +58,7 @@ variable "db_username" {
 
 variable "db_instance_class" {
   type    = string
-  default = "db.t3.micro"   # small for a learning project — bump up if load-testing later
+  default = "db.t3.small"   # small for a learning project — bump up if load-testing later
 }
 
 variable "db_allocated_storage" {

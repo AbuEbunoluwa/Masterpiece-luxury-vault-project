@@ -41,3 +41,11 @@ Thumbs.db
 *.zip
 *.tar.gz
 iam_policy.json
+.env
+*.env
+*.tfvars
+*.pem
+.env
+*.env
+*.tfvars
+*.pem

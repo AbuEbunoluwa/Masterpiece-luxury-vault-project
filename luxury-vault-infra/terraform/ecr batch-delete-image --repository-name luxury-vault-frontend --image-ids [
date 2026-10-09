@@ -1,0 +1,78 @@
+{
+    "imageIds": [
+        {
+            "imageDigest": "sha256:9014a933018e1011b4c64f48074f6681fcaead612970ae4837e1a56f4977d329",
+            "imageTag": "v1"
+        },
+        {
+            "imageDigest": "sha256:e770dfeb9efd413b3766ab9d86f76f3bf1cfb15c33d2ef6b8d958b27f6f16d3a",
+            "imageTag": "v2"
+        },
+        {
+            "imageDigest": "sha256:57112338165aedbc9e8477c8fcd187d7cf989bf35725da90707e296e79e86deb",
+            "imageTag": "v4"
+        },
+        {
+            "imageDigest": "sha256:f3f9d6a3373089af9ce2ebd5d68c121ec166e1f0e61228ae2881e433d73280a5",
+            "imageTag": "v3"
+        }
+    ],
+    "failures": [
+        {
+            "imageId": {
+                "imageDigest": "sha256:b64ff0892a25dc85ae5bc1aca82600ec90f80e93673418930f459a84a00078c9"
+            },
+            "failureCode": "ImageReferencedByManifestList",
+            "failureReason": "Requested image referenced by manifest list: [sha256:e770dfeb9efd413b3766ab9d86f76f3bf1cfb15c33d2ef6b8d958b27f6f16d3a]"
+        },
+        {
+            "imageId": {
+                "imageDigest": "sha256:ef59f89a8f1f7f22c4dbb242273249aa11006e7c8edf23d76d8a17fbbd4051c1"
+            },
+            "failureCode": "ImageReferencedByManifestList",
+            "failureReason": "Requested image referenced by manifest list: [sha256:f3f9d6a3373089af9ce2ebd5d68c121ec166e1f0e61228ae2881e433d73280a5]"
+        },
+        {
+            "imageId": {
+                "imageDigest": "sha256:53dcad69cea428451306b70fb6ed5caf0d9d58027b39218b879a32075a6ce634"
+            },
+            "failureCode": "ImageReferencedByManifestList",
+            "failureReason": "Requested image referenced by manifest list: [sha256:57112338165aedbc9e8477c8fcd187d7cf989bf35725da90707e296e79e86deb]"
+        },
+        {
+            "imageId": {
+                "imageDigest": "sha256:00c60fca4eb45d4705b973e2124a80d814bad30ff353332bea578986eb11cdb4"
+            },
+            "failureCode": "ImageReferencedByManifestList",
+            "failureReason": "Requested image referenced by manifest list: [sha256:9014a933018e1011b4c64f48074f6681fcaead612970ae4837e1a56f4977d329]"
+        },
+        {
+            "imageId": {
+                "imageDigest": "sha256:15c8f8f6c5fa5d06006cfc1195c6a48af533815360852dee4edef480c4d4e36b"
+            },
+            "failureCode": "ImageReferencedByManifestList",
+            "failureReason": "Requested image referenced by manifest list: [sha256:57112338165aedbc9e8477c8fcd187d7cf989bf35725da90707e296e79e86deb]"
+        },
+        {
+            "imageId": {
+                "imageDigest": "sha256:884ae33838404a3d3eb53305e4c6ad8cd67d7de7ae4e7be0c120bbe0e21bc897"
+            },
+            "failureCode": "ImageReferencedByManifestList",
+            "failureReason": "Requested image referenced by manifest list: [sha256:f3f9d6a3373089af9ce2ebd5d68c121ec166e1f0e61228ae2881e433d73280a5]"
+        },
+        {
+            "imageId": {
+                "imageDigest": "sha256:4eecc7736b7e8dd921a6d08d6975e207672f8e36cff1c4ea69b3ae45d72a2915"
+            },
+            "failureCode": "ImageReferencedByManifestList",
+            "failureReason": "Requested image referenced by manifest list: [sha256:e770dfeb9efd413b3766ab9d86f76f3bf1cfb15c33d2ef6b8d958b27f6f16d3a]"
+        },
+        {
+            "imageId": {
+                "imageDigest": "sha256:b63fb1171772bb5ff07dee2753eb9d4fc070c460ac391338c115f1f88cdd9ca4"
+            },
+            "failureCode": "ImageReferencedByManifestList",
+            "failureReason": "Requested image referenced by manifest list: [sha256:9014a933018e1011b4c64f48074f6681fcaead612970ae4837e1a56f4977d329]"
+        }
+    ]
+}
